@@ -1,0 +1,181 @@
+{
+  "info": {
+    "_postman_id": "ce72ee6a-040c-41be-a58b-822440a19be4",
+    "name": "Kovon Backend Api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "46424587"
+  },
+  "item": [
+    {
+      "name": "http://localhost:5000/api/jobs",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Registered Nurse\",\r\n  \"country\": \"Germany\",\r\n  \"minExperience\": 2,\r\n  \"minLanguageScore\": 60\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/jobs",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "jobs"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:5000/api/candidates",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"A\",\r\n  \"skill\": \"Nurse\",\r\n  \"experience\": 3,\r\n  \"languageScore\": 70,\r\n  \"documentsVerified\": true\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/candidates",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "candidates"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:5000/api/applications",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"candidateId\": \"6995abf4df2ae220589a07f4\",\r\n  \"jobId\": \"6995a9afec79971db7777862\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/applications",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "applications"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:5000/api/applications",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzU2NjIxZDJlZjM3NTc4ZTg5MjY0ZSIsImlhdCI6MTc1Nzc2NzY4NSwiZXhwIjoxNzYwMzU5Njg1fQ.SuoTasj9dLK1Kb9kFN_k5RE8Xcaem4k9YGHV7sboU7Q",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/applications?jobId=6995a9afec79971db7777862",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "applications"
+          ],
+          "query": [
+            {
+              "key": "jobId",
+              "value": "6995a9afec79971db7777862"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:5000/api/applications/6995ad0bdf2ae220589a07fe/shortlist",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/applications/6995ad0bdf2ae220589a07fe/shortlist",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "applications",
+            "6995ad0bdf2ae220589a07fe",
+            "shortlist"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
