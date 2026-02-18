@@ -1,167 +1,184 @@
-Kovon Backend Hiring Assignment
-📌 Objective
+# 📦 Kovon Backend Hiring Assignment
 
-This project implements a backend service for Kovon’s global job marketplace using:
+## 📌 Objective
 
-Node.js
+This project implements a backend service for Kovon's Global Job
+Marketplace using:
 
-TypeScript
-
-Express.js
-
-MongoDB Atlas
-
-Mongoose
+-   Node.js
+-   TypeScript
+-   Express.js
+-   MongoDB Atlas
+-   Mongoose
 
 The system supports:
 
-Storing candidates
+-   Storing candidates
+-   Storing job roles
+-   Allowing candidates to apply for jobs
+-   Automatic eligibility score calculation
+-   Recruiter shortlisting functionality
+-   REST API exposure
 
-Storing job roles
+------------------------------------------------------------------------
 
-Allowing candidates to apply for jobs
+## ⚙️ Setup Instructions
 
-Automatic eligibility score calculation
+### 1️⃣ Clone the Repository
 
-Recruiter shortlisting functionality
-
-REST API exposure
-
-
-
-⚙ Setup Instructions
-1️⃣ Clone the Repository
+``` bash
 git clone <your-repository-link>
 cd kovon-backend
+```
 
-2️⃣ Install Dependencies
+### 2️⃣ Install Dependencies
+
+``` bash
 npm install
+```
 
-3️⃣ Create Environment File
+### 3️⃣ Create Environment File
 
-Create a .env file in the root directory:
+Create a `.env` file in the root directory:
 
+``` env
 PORT=5000
 MONGO_URI=your_mongodb_atlas_connection_string
-
+```
 
 Example:
 
+``` env
 PORT=5000
 MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/kovon_db?retryWrites=true&w=majority
+```
 
-4️⃣ Run the Server
+### 4️⃣ Run the Server
+
+``` bash
 npm run dev
+```
 
+Server runs at:
 
-Server will run at:
+    http://localhost:5000
 
-http://localhost:5000
+------------------------------------------------------------------------
 
-🔄 Application Flow
+## 🔄 Application Flow
 
-Client sends request (Postman / API client)
+    Client (Postman / API Client)
+            ↓
+    Express Routes
+            ↓
+    Controllers
+            ↓
+    Service Layer (Business Logic)
+            ↓
+    Repository Layer (Database Access)
+            ↓
+    MongoDB Atlas
 
-Route matches endpoint
+------------------------------------------------------------------------
 
-Controller handles HTTP request/response
+## 🧩 Layer Responsibilities
 
-Service executes business logic
+### 📌 Routes
 
-Repository interacts with MongoDB
+-   Defines API endpoints
+-   Connects endpoints to controllers
 
-Response returned to client
+### 📌 Controllers
 
-🧩 Layer Responsibilities
-Routes
+-   Handles HTTP request & response
+-   Delegates business logic to services
 
-Defines API endpoints and connects them to controllers.
+### 📌 Services
 
-Controllers
+Contains core business logic: - Eligibility score calculation - Status
+determination (ELIGIBLE / REJECTED) - Sorting logic - Shortlist
+restriction validation
 
-Handles request and response logic.
-Does not contain business logic.
+### 📌 Repositories
 
-Services
+-   Handles database operations using Mongoose
 
-Contains core business logic:
+### 📌 Models
 
-Eligibility score calculation
+-   Defines MongoDB schema structure
 
-Status determination (ELIGIBLE / REJECTED)
+------------------------------------------------------------------------
 
-Sorting logic
+## 📊 Database Schema
 
-Shortlist restriction validation
+### 👤 Candidate
 
-Repositories
+  Field               Type
+  ------------------- ---------
+  name                String
+  skill               String
+  experience          Number
+  languageScore       Number
+  documentsVerified   Boolean
+  createdAt           Date
 
-Handles database operations using Mongoose.
+------------------------------------------------------------------------
 
-Models
+### 💼 Job
 
-Defines MongoDB schema structure.
+  Field              Type
+  ------------------ --------
+  title              String
+  country            String
+  minExperience      Number
+  minLanguageScore   Number
+  createdAt          Date
 
-📊 Architecture Diagram
+------------------------------------------------------------------------
 
-Below is the architecture of the implemented system:
+### 📄 Application
 
-            Client (Postman)
-                    |
-                    v
-               Express Routes
-                    |
-                    v
-                Controllers
-                    |
-                    v
-              Service Layer
-          (Business Logic)
-                    |
-                    v
-            Repository Layer
-          (Database Access)
-                    |
-                    v
-             MongoDB Atlas
+  Field              Type
+  ------------------ -----------------------------------
+  candidateId        ObjectId
+  jobId              ObjectId
+  eligibilityScore   Number
+  status             ELIGIBLE / REJECTED / SHORTLISTED
+  createdAt          Date
 
+------------------------------------------------------------------------
 
+## 🏗 Architecture Overview
 
-             📊 Database Schema
-Candidate
+                Client (Postman)
+                        |
+                        v
+                   Express Routes
+                        |
+                        v
+                    Controllers
+                        |
+                        v
+                  Service Layer
+              (Business Logic)
+                        |
+                        v
+                Repository Layer
+              (Database Access)
+                        |
+                        v
+                 MongoDB Atlas
 
-name (String)
+------------------------------------------------------------------------
 
-skill (String)
+## 🚀 Tech Stack Summary
 
-experience (Number)
+  Layer       Technology Used
+  ----------- -----------------
+  Runtime     Node.js
+  Language    TypeScript
+  Framework   Express.js
+  Database    MongoDB Atlas
+  ODM         Mongoose
 
-languageScore (Number)
-
-documentsVerified (Boolean)
-
-createdAt (Date)
-
-Job
-
-title (String)
-
-country (String)
-
-minExperience (Number)
-
-minLanguageScore (Number)
-
-createdAt (Date)
-
-Application
-
-candidateId (ObjectId, ref: Candidate)
-
-jobId (ObjectId, ref: Job)
-
-eligibilityScore (Number)
-
-status (ELIGIBLE | REJECTED | SHORTLISTED)
-
-createdAt (Date)
+------------------------------------------------------------------------
